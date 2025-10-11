@@ -1,96 +1,88 @@
+import React, { useState } from "react";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import React,{useState} from "react";
-import {View, TextInput, StyleSheet,Text,Image,Alert} from "react-native";
+const Onboarding = ({ setHasOnboarded }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-import {Button,style } from "react-native-paper";
+  const handleOnboardingComplete = async () => {
+    if (!name || !email) {
+      Alert.alert("Please fill all fields");
+      return;
+    }
 
+    try {
+      await AsyncStorage.setItem("hasOnboarded", "true");
+      setHasOnboarded(true); // triggers App.js to re-render to Home screen
+    } catch (error) {
+      console.error("Error saving onboarding status:", error);
+    }
+  };
 
-const OnBoarding =  ({navigation})=>{
-    const [name,setName] =useState("");
-    const [email,setEmail] =useState("");
-    return(
-        <View style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.logoContainer}>
-          <Image style={styles.logo} source= {require("../assets/lemo2.png")}></Image>
-          <Text style={styles.Ltle_text}>Little Lemon </Text>
-          </View>
-        </View>
-      
-      
-         <View style={styles.mainInfo}>
-          <Text style={styles.txt}>Let Us get to know U</Text>     
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome 👋</Text>
+      <Text style={styles.subtitle}>Let's get started!</Text>
 
-          <Text>First Name</Text>
-          <TextInput style={styles.input} placeholder="Enter ur first name" 
-          value={name} blurOnSubmit={true} 
-          onChangeText={setName} 
-          editable={true}/>
-                 
-          <Text>Email</Text>
-          <TextInput style={styles.input} placeholder="Email" 
-          value={email} blurOnSubmit={true}    
-          onChangeText={setEmail} editable={true}/>
-            
-        </View>
-        <View  style={styles.footer}>
-        {/* <Button  title="Next" onPress={()=>Alert.alert('Its nice to meet u')}/> */}
-          <Button  mode="contained" buttonColor="#F4CE14" textColor="black"
-         // replace so back button doesn't go back to onboarding
-           onPress ={()=>(navigation.navigate("Home"))} 
-            style ={styles.btn}>Next</Button>      
-        </View>
-    
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your name"
+        value={name}
+        onChangeText={setName}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your email"
+        value={email}
+        onChangeText={setEmail}
+      />
+
+      <TouchableOpacity style={styles.button} onPress={handleOnboardingComplete}>
+        <Text style={styles.buttonText}>Continue</Text>
+      </TouchableOpacity>
     </View>
-)
-}
-const styles = StyleSheet.create({
-  // main body 
-  container :
-      {
-        flex:1,
-      },
-      header:{
-        paddingTop: 40,
-        flex:1,
-      },
-      logo:{
-      resizeMode:"contain",
-      height:"40%",
-      width:"40%",
-      marginTop:"20%",
-      alignSelf:"center",
-      // marginRight:"30%",
-     
-    },
-    Ltle_text:{
-     alignSelf:"flex-end",
-     fontWeight:"bold",
-     fontSize:20,
-    } ,   
-    txt:{
-    fontSize:20,
-    paddingBottom:10,
-    },
-    
-    mainInfo:{
-      flex:2,
-     backgroundColor:"#EDEFEE",
-    },
-     input: {
-        width:"auto",
-        height:"20px",
-        borderColor:"black",
-        borderWidth:2,
-        borderRadius:4,
-      },
-    footer:{
-        flex:1,
-     },
- 
-    btn:{
-     borderRadius:7,
-     }, 
+  );
+};
 
-})
-export default OnBoarding;
+export default Onboarding;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    padding: 20,
+    backgroundColor: "#fff",
+  },
+  title: {
+    fontSize: 26,
+    fontWeight: "700",
+    textAlign: "center",
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    textAlign: "center",
+    marginBottom: 30,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 15,
+    fontSize: 16,
+  },
+  button: {
+    backgroundColor: "#007bff",
+    borderRadius: 10,
+    padding: 15,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "600",
+  },
+});

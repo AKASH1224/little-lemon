@@ -1,13 +1,28 @@
-
 import React from "react";
-import {Button, View, Text } from "react-native";
-const HomeScreen =({navigation})=>{
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const HomeScreen = ({ setHasOnboarded }) => {
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem("hasOnboarded");
+    setHasOnboarded(false); // return to onboarding
+  };
+
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button title="OnBoarding" onPress={() => navigation.navigate("OnBoarding")} />
-      <Button title="Profile" color="#0c0c0dff" onPress={() => navigation.navigate("Profile")} />
+    <View style={styles.container}>
+      <Text style={styles.text}>🎉 Home Screen 🎉</Text>
+      <TouchableOpacity style={styles.button} onPress={handleLogout}>
+        <Text style={styles.buttonText}>Reset Onboarding</Text>
+      </TouchableOpacity>
     </View>
   );
-}
-export default HomeScreen ;
+};
+
+export default HomeScreen;
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: "center", alignItems: "center" },
+  text: { fontSize: 24, fontWeight: "bold", marginBottom: 20 },
+  button: { backgroundColor: "#ff4d4d", padding: 12, borderRadius: 8 },
+  buttonText: { color: "#fff", fontSize: 16 },
+});
