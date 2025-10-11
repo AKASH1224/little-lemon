@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-import Onboarding from "./screens/Onboarding";
-import HomeScreen from "./screens/HomeScreen";
-
-const Stack = createNativeStackNavigator();
+import AuthStack from "./navigation/AuthStack";
+import AppStack from "./navigation/AppStack";
 
 export default function App() {
   const [hasOnboarded, setHasOnboarded] = useState(false);
@@ -21,22 +17,14 @@ export default function App() {
     checkOnboarding();
   }, []);
 
-  if (loading) return null; // optional splash
+  if (loading) return null; // Or show a SplashScreen component
 
   return (
     <NavigationContainer>
       {hasOnboarded ? (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Home">
-            {(props) => <HomeScreen {...props} setHasOnboarded={setHasOnboarded} />}
-          </Stack.Screen>
-        </Stack.Navigator>
+        <AppStack setHasOnboarded={setHasOnboarded} />
       ) : (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Onboarding">
-            {(props) => <Onboarding {...props} setHasOnboarded={setHasOnboarded} />}
-          </Stack.Screen>
-        </Stack.Navigator>
+        <AuthStack setHasOnboarded={setHasOnboarded} />
       )}
     </NavigationContainer>
   );
