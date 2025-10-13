@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const HomeScreen = ({ setHasOnboarded,navigation}) => {
+const HomeScreen = ({ navigation}) => {
   const handleLogout = async () => {
     await AsyncStorage.removeItem("hasOnboarded");
     setHasOnboarded(false); // return to onboarding
@@ -11,9 +11,7 @@ const HomeScreen = ({ setHasOnboarded,navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>🎉 Home Screen 🎉</Text>
-      <TouchableOpacity style={styles.button} onPress={handleLogout}>
-        <Text style={styles.buttonText}>Reset Onboarding</Text>
-      </TouchableOpacity>
+      
       <TouchableOpacity style={styles.button}  onPress={()=> navigation.navigate("Profile")}>
         <Text style={styles.buttonText}>Profile</Text>
         </TouchableOpacity>

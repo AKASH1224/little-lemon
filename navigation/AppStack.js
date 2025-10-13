@@ -8,11 +8,11 @@ const Stack =createNativeStackNavigator();
 const AppStack = ({setHasOnboarded   })=>{
     return(
         <Stack.Navigator>
-           <Stack.Screen name="Home">
-            {(props) => <HomeScreen {...props}  setHasOnboarded={setHasOnboarded}/>}
+           <Stack.Screen name="Profile">
+            {(props) => <ProfileScreen {...props}  setHasOnboarded={setHasOnboarded}/>}
 
            </Stack.Screen>
-           <Stack.Screen name="Profile" component={ProfileScreen}/>
+           <Stack.Screen name="Home" component={HomeScreen}/>
           
         </Stack.Navigator>
 
