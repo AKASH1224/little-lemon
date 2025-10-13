@@ -74,6 +74,8 @@ const ProfileScreen = ({navigation, setHasOnboarded}) => {
         }
     }
 
+    // clear  the profileData
+
     const removeProfileData = async()=>{
         Alert.alert('Clear Form? ',
             'are sure u wnat to clear all the fields ',
@@ -136,6 +138,9 @@ const ProfileScreen = ({navigation, setHasOnboarded}) => {
         setHasOnboarded(false)
     }
     
+
+//  ------------------------------ Components -------------------------------- 
+
     return(
          <ScrollView  style={styles.scrollView} contentContainerStyle={styles.contentContainer}     showsVerticalScrollIndicator={false}  keyboardShouldPersistTaps="handled" >
 
@@ -199,6 +204,9 @@ const ProfileScreen = ({navigation, setHasOnboarded}) => {
     
     )
 }
+
+
+
 
 const styles = StyleSheet.create({
     scrollView: {
