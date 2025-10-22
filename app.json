@@ -20,13 +20,24 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.akash_deep.LittleLemon"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-font"
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Markazi_Text/MarkaziText-Regular.ttf",
+            "./assets/fonts/Markazi_Text/MarkaziText-Bold.ttf",
+            "./assets/fonts/Jost/Jost-Italic-VariableFont_wght.ttf",
+            "./assets/fonts/Jost/Jost-VariableFont_wght.ttf"
+          ]
+        }
+      ]
     ]
   }
 }

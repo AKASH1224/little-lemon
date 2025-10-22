@@ -69,6 +69,7 @@ const styles=StyleSheet.create({
        borderRadius:100,
     },
     txt:{
+        fontFamily:'Jost',
         fontSize:22,
         letterSpacing:2,
         fontWeight:700,
