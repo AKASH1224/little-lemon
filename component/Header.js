@@ -29,16 +29,16 @@ return(
 
 const styles=StyleSheet.create({
     safeArea:{
-            backgroundColor: "#c26d19ff", // same as header color
+            backgroundColor: "#F27329", // same as header color
             flex:0,
     },
     container:{
         // flex:1,
-        height:56,
+        height:50,
         flexDirection:"row",
         justifyContent:"space-between",
         alignItems:"center",
-        backgroundColor:"#c26d19ff",
+        backgroundColor:"#F27329",
        borderRadius:2,
        paddingHorizontal:12,
     },
@@ -58,8 +58,8 @@ const styles=StyleSheet.create({
     },
 
     Image:{
-        height:55,
-        width:60,
+        height:40,
+        width:50,
         borderRadius:15,
         
     },
@@ -70,7 +70,7 @@ const styles=StyleSheet.create({
     },
     txt:{
         fontFamily:'Jost',
-        fontSize:22,
+        fontSize:18,
         letterSpacing:2,
         fontWeight:700,
         color:"white",
