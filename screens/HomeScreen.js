@@ -171,18 +171,15 @@ BanHeading:{
   color:"white",
   fontWeight: 'bold',
 },
-
 BanSubHead:{
     fontFamily: 'Markazi',
   fontSize: 22,
   color:"white",
   fontWeight:"semibold",
-
 },
 paraGrap:{
 fontSize:18,
 color:"white",
-
 },
 
 BannerImg:{
@@ -191,30 +188,26 @@ BannerImg:{
   borderRadius:12,
   right:20,
   position:"absolute",
-  
-
 },
 
 filterButtonContainer: {
-  height:140,
+  height:100,
+  flexDirection:"row",
   backgroundColor: "#fff",
   paddingLeft:10,
 },
 
-
-filterRow: {
-  flexDirection: "row",
-  justifyContent: "space-around",
-  marginVertical: 5,
-},
-
 filterButton: {
   backgroundColor: "#eee",
-  borderRadius: 20,
+  flexDirection:"row",
+  borderRadius: 10,
+  marginRight:20,
+
 },
 filterButtonSelected: {
   backgroundColor: "#F27329",
 },
+
 filterText: {
   color: "#333",
   fontWeight: "600",
