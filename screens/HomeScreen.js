@@ -80,13 +80,17 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
     </View>
   );
 };
+
+
+
   
 
   const renderItem=({item})=><Item item={item}/>
   
    const categories = ["Seafood", "Chicken", "Vegetarian", "Pasta"];
 
-  const handleLogout = async () => {
+
+   const handleLogout = async () => {
     await AsyncStorage.removeItem("hasOnboarded");
     setHasOnboarded(false); // return to onboarding
   };
@@ -99,38 +103,34 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
                   <View style={styles.Banner}>
                     <Text style={styles.BanHeading}>Little Lemon </Text>
                         <Text style={styles.BanSubHead}>Chicago</Text>
-        
                           <Text style={styles.paraGrap}>We are family owned medditerean restraunts,
                                     focused on traditional recipes served  with  a modern twist</Text>
-                        <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} />
-             
-                  </View>
-                  {/**-----------------------* */ }
-   
-      
-      <View style={styles.filterButtonContainer}>
-
-        <FlatList data={categories} showsHorizontalScrollIndicator={true}  renderItem={
-          ({item})=>{ const selected = item === selectedCategory;
-             return(
-             <TouchableOpacity   
-             onPress={()=> setSelectedCategory(item)}  
-             style={[styles.filterButton,selected ?styles.filterButtonSelected:null,]}>
-                 <Text style={[styles.filterText , selected ? styles.filterTextSelected :null]}>
-                  {item}
-                 </Text>
-              </TouchableOpacity>
-              );
-            }}/>
-            
-     </View>
+                          {/* <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} /> */}
+                   </View>
+                      <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} />
+                  
+                   {/**-----------------------* */ }
+                   <View style={styles.filterButtonContainer}>
+                     <FlatList data={categories} horizontal={true}  renderItem={
+                          ({item})=>{ const selected = item === selectedCategory;
+                             return(
+                             <TouchableOpacity   
+                             onPress={()=> setSelectedCategory(item)}  
+                             style={[styles.filterButton,selected ?styles.filterButtonSelected:null,]}>
+                                 <Text style={[styles.filterText , selected ? styles.filterTextSelected :null]}>
+                                  {item}
+                                 </Text>
+                              </TouchableOpacity>
+                              );
+                            }}/>
+                    </View>
     
     
          {/*--------------- ----------------MainMenu---------------------------------------- */}
     
       <View style={styles.mainMenu}>
        {isLoading ? (<ActivityIndicator color="#F27329"  size="large"   style={{ marginTop: 40 }}  />): 
-       (<FlatList data={data} renderItem={renderItem}     keyExtractor={(item) => item.idMeal} showsVerticalScrollIndicator ={false} 
+       (<FlatList data={data} renderItem={renderItem}     keyExtractor={(item) => item.idMeal} 
         contentContainerStyle={styles.listContainer}> 
         </FlatList>)}
       </View>
@@ -156,61 +156,72 @@ container: { flex:1,backgroundColor:"#fff"},
 // full height
 
 Banner: { 
-  height:160, 
+  height:220, 
   width: "100%", 
   backgroundColor:"#F27329",
-  paddingHorizontal:40,
   borderBottomStartRadius:40, 
   borderBottomEndRadius:40,
+  
 },
-
-
 BanHeading:{
   fontFamily: 'Markazi',
-  fontSize: 44,
+  fontSize: 37,
+  bottom:12,
+  left:9,
   color:"white",
   fontWeight: 'bold',
 },
-BanSubHead:{
-    fontFamily: 'Markazi',
-  fontSize: 22,
+
+BanSubHead:
+{
+  fontFamily: 'Markazi',
+  fontSize: 28,
   color:"white",
-  fontWeight:"semibold",
+ bottom:12,
+  left:9,
+   fontWeight:"semibold",
 },
+
 paraGrap:{
-fontSize:18,
+fontSize:17,
 color:"white",
+bottom:12,
+  left:9,
 },
 
 BannerImg:{
-  height:100,
-  width:150,
-  borderRadius:12,
-  right:20,
+  height:120,
+  width:120,
+  borderRadius:18,
+  right:10,
+  top:38,
   position:"absolute",
 },
 
 filterButtonContainer: {
   height:100,
-  flexDirection:"row",
   backgroundColor: "#fff",
-  paddingLeft:10,
+  paddingLeft:14,
+  paddingTop:9  ,
 },
 
 filterButton: {
   backgroundColor: "#eee",
-  flexDirection:"row",
-  borderRadius: 10,
-  marginRight:20,
-
+  borderRadius: 15,
+  marginRight: 10,  // Changed from marginLeft
+  paddingHorizontal:8,
+  paddingVertical: 10,    // Add vertical padding
+  width:90,
+  height: 70,
 },
 filterButtonSelected: {
-  backgroundColor: "#F27329",
+  backgroundColor: "#F29f05",
 },
 
 filterText: {
   color: "#333",
   fontWeight: "600",
+  fontSize:15,
 },
 
 mainMenu: { flex: 2, width: "100%", backgroundColor:"#fff"},

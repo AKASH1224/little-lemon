@@ -34,7 +34,7 @@ const styles=StyleSheet.create({
     },
     container:{
         // flex:1,
-        height:50,
+        height:30,
         flexDirection:"row",
         justifyContent:"space-between",
         alignItems:"center",
@@ -61,16 +61,19 @@ const styles=StyleSheet.create({
         height:40,
         width:50,
         borderRadius:15,
+        top:10,
         
     },
     Prof:{
-       height:60,
-       width:60,
+       height:50,
+       width:50,
+       top:13,
        borderRadius:100,
     },
     txt:{
         fontFamily:'Jost',
-        fontSize:18,
+        fontSize:16,
+        top:10,
         letterSpacing:2,
         fontWeight:700,
         color:"white",
