@@ -6,10 +6,10 @@ import AppStack from "./navigation/AppStack";
 
 
 
+
 export default function App() {
   const [hasOnboarded, setHasOnboarded] = useState(false);
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     const checkOnboarding = async () => {

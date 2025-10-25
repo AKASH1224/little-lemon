@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Image,View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFonts } from "expo-font";
 
 
 const HomeScreen = ({ navigation}) => {
   const [isLoading,setLoading]=useState(true);
   const [data,setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Vegetarian"); // e.g., Chicken
-  // const [selectedCountry, setSelectedCountry] = useState(""); // e.g., Indian
- 
-
-
+  
+let [fontsLoaded] = useFonts({
+  'MarkaziText': require('../assets/fonts/MarkaziText-VariableFont_wght.ttf'),
+});
+  
 
 const getMealsByCategory=async(category)=>{
   setLoading(true);
@@ -58,38 +60,37 @@ const Item =({item})=>{
      
 const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/images/${item.image}`;
 
-    return(
-      <View style={styles.card}>
-       <Image style={styles.CardImg}  source={{uri:item.strMealThumb}} />
-      <View style={styles.cardContent}>
-        
-        <View style={styles.categoryBadge}>
-          <Text style={styles.categoryText}>{selectedCategory}</Text>
-        </View>
+    
+ return(
+       <View style={styles.card}>
+        <Image style={styles.CardImg}  source={{uri:item.strMealThumb}} />
+       <View style={styles.cardContent}>
+         
+         <View style={styles.categoryBadge}>
+           <Text style={styles.categoryText}>{selectedCategory}</Text>
+         </View>
    
-        <Text style={styles.itemName}>{item.strMeal}</Text>
+         <Text style={styles.itemName}>{item.strMeal}</Text>
+         
+         {/* Description */}
+         <Text style={styles.description}>{item.idMeal}</Text>
         
-        {/* Description */}
-        <Text style={styles.description}>{item.idMeal}</Text>
-        
-        {/* Price */}
+         {/* Price */}
         <Text style={styles.price}>${item.price}</Text>
        
-      </View>
-    </View>
-  );
-};
+       </View>
+     </View>
+   );
+ };
 
 
 
-  
-
+ // flatList
   const renderItem=({item})=><Item item={item}/>
+  const categories = ["Vegetarian","Chicken","Seafood","Dessert","Breakfast","lamb", "Pasta",];
   
-   const categories = ["Vegetarian","Chicken","Seafood","Lamb","BreakFast","Dessert", "Pasta",];
-
-
-   const handleLogout = async () => {
+  
+  const handleLogout = async () => {
     await AsyncStorage.removeItem("hasOnboarded");
     setHasOnboarded(false); // return to onboarding
   };
@@ -100,13 +101,14 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
     <View style={styles.container}>
       {/*----------------- Banner----------------------------- */}
                   <View style={styles.Banner}>
-                    <Text style={styles.BanHeading}>Little Lemon </Text>
+                    <Text style={[styles.BanHeading, { fontFamily: fontsLoaded ? 'MarkaziText' : undefined }]}>
+                      Little Lemon </Text>
                         <Text style={styles.BanSubHead}>Chicago</Text>
                           <Text style={styles.paraGrap}>We are family owned medditerean restraunts,
                                     focused on traditional recipes served  with  a modern twist</Text>
-                          {/* <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} /> */}
+                           {/* <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} /> */}
                    </View>
-                      <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} />
+                  <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} />
                   
                    {/**-----------------------* */ }
                    <View style={styles.filterButtonContainer}>
@@ -163,12 +165,12 @@ Banner: {
   
 },
 BanHeading:{
-  fontFamily: 'Markazi',
+
   fontSize: 37,
   bottom:12,
   left:9,
-  color:"white",
-  fontWeight: 'bold',
+  fontSize: 24,
+   color:"white",
 },
 
 BanSubHead:
