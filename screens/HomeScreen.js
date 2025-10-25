@@ -8,8 +8,7 @@ const HomeScreen = ({ navigation}) => {
   const [data,setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Vegetarian"); // e.g., Chicken
   // const [selectedCountry, setSelectedCountry] = useState(""); // e.g., Indian
-
-
+ 
 
 
 
@@ -87,7 +86,7 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
 
   const renderItem=({item})=><Item item={item}/>
   
-   const categories = ["Seafood", "Chicken", "Vegetarian", "Pasta"];
+   const categories = ["Vegetarian","Chicken","Seafood","Lamb","BreakFast","Dessert", "Pasta",];
 
 
    const handleLogout = async () => {

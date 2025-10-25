@@ -4,9 +4,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import AuthStack from "./navigation/AuthStack";
 import AppStack from "./navigation/AppStack";
 
+
+
 export default function App() {
   const [hasOnboarded, setHasOnboarded] = useState(false);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const checkOnboarding = async () => {
