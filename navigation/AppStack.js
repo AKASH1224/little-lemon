@@ -15,9 +15,9 @@ const AppStack = ({setHasOnboarded   })=>{
            
         {(props) => <HomeScreen {...props}  setHasOnboarded={setHasOnboarded}/>}
      </Stack.Screen>
-           <Stack.Screen name="Profile" >
-            {(props) => <ProfileScreen {...props}setHasOnboarded={setHasOnboarded} />}
-           </Stack.Screen>
+    <Stack.Screen name="Profile" options={{header : (props)=> <Header {...props}/>}} >
+        {(props) => <ProfileScreen {...props} setHasOnboarded={setHasOnboarded} />}
+    </Stack.Screen>
           
         </Stack.Navigator>
 

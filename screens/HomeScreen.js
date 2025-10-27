@@ -187,7 +187,7 @@ paraGrap:
 {
 fontFamily:"Jost",
 fontSize:19,
-fontWeight:"600",
+fontWeight:"400",
 color:"white",
 bottom:38,
 left:14,
