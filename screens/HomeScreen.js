@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Image,View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 
 const HomeScreen = ({ navigation}) => {
@@ -103,9 +104,9 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
                   <View style={styles.Banner}>
                     <Text style={[styles.BanHeading, { fontFamily: fontsLoaded ? 'MarkaziText' : undefined }]}>
                       Little Lemon </Text>
-                        <Text style={styles.BanSubHead}>Chicago</Text>
-                          <Text style={styles.paraGrap}>We are family owned medditerean restraunts,
-                                    focused on traditional recipes served  with  a modern twist</Text>
+                        <Text style={[styles.BanSubHead , {fontFamily:fontsLoaded ? 'MarkaziText' : undefined}]}>Chicago</Text>
+                          <Text style={styles.paraGrap}> We are a family owned {"\n"} medditerean restraunts,
+                                   {"\n"} focused on traditional {"\n"} recipes served  with a {"\n"} modern twist</Text>
                            {/* <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} /> */}
                    </View>
                   <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} />
@@ -157,50 +158,52 @@ container: { flex:1,backgroundColor:"#fff"},
 // full height
 
 Banner: { 
-  height:220, 
-  width: "100%", 
+  height:hp("29%"),
+  width:wp("100%"), 
   backgroundColor:"#F27329",
-  borderBottomStartRadius:40, 
-  borderBottomEndRadius:40,
-  
+  borderBottomStartRadius:20, 
+  borderBottomEndRadius:20,
 },
-BanHeading:{
-
-  fontSize: 37,
-  bottom:12,
-  left:9,
-  fontSize: 24,
-   color:"white",
+BanHeading:
+{
+  fontSize:hp("7%"),
+  fontWeight:("10%"),
+  bottom:15,
+  left:14,
+ color:"white",
 },
 
 BanSubHead:
 {
   fontFamily: 'Markazi',
-  fontSize: 28,
+  fontSize:hp("5%"),
   color:"white",
- bottom:12,
-  left:9,
-   fontWeight:"semibold",
+  bottom:34,
+  left:14,
+  fontWeight:"semibold",
 },
 
-paraGrap:{
-fontSize:17,
+paraGrap:
+{
+fontFamily:"Jost",
+fontSize:19,
+fontWeight:"600",
 color:"white",
-bottom:12,
-  left:9,
+bottom:38,
+left:14,
 },
 
 BannerImg:{
-  height:120,
-  width:120,
-  borderRadius:18,
-  right:10,
-  top:38,
+  height:hp("15%"),
+  width:wp("36%"),
+  borderRadius:14,
+  right:18,
+  top:60,
   position:"absolute",
 },
 
 filterButtonContainer: {
-  height:100,
+  height:90,
   backgroundColor: "#fff",
   paddingLeft:14,
   paddingTop:9  ,
@@ -209,11 +212,11 @@ filterButtonContainer: {
 filterButton: {
   backgroundColor: "#eee",
   borderRadius: 15,
-  marginRight: 10,  // Changed from marginLeft
+  marginRight: 18,  // Changed from marginLeft
   paddingHorizontal:8,
   paddingVertical: 10,    // Add vertical padding
   width:90,
-  height: 70,
+  height: 40,
 },
 filterButtonSelected: {
   backgroundColor: "#F29f05",
