@@ -1,25 +1,48 @@
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen  from "../screens/ProfileScreen";
 import Header from "../component/Header";
+import { Ionicons } from '@expo/vector-icons'; 
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-const Stack =createNativeStackNavigator();
+const Tab =createBottomTabNavigator();
 
 const AppStack = ({setHasOnboarded   })=>{
     return(
-        <Stack.Navigator>
-      <Stack.Screen name="Home" options={{
+        <Tab.Navigator screenOptions={({route}) =>({
+            tabBarIcon: ({focused,color,size}) => {
+                let iconName ;
+                let IconCompo;
+                if (route.name ==="Home"){
+                    // iconName= focused ? "home" :"home-outline";
+                    iconName = 'home';
+                    IconCompo = FontAwesome ;
+                }else if (route.name === "Profile"){
+                    iconName = focused ? 'person' : 'person-outline';
+                     IconCompo =Ionicons;
+                }
+
+                return <IconCompo  name={iconName} size={size} color={color} />;
+
+            },
+                tabBarActiveTintColor: '#F27329',
+    tabBarInactiveTintColor: 'gray',
+    
+            
+        })
+        }>
+      <Tab.Screen name="Home" options={{
         header: (props) => <Header {...props} />, // custom header for this screen
        }}>
            
         {(props) => <HomeScreen {...props}  setHasOnboarded={setHasOnboarded}/>}
-     </Stack.Screen>
-    <Stack.Screen name="Profile" options={{header : (props)=> <Header {...props}/>}} >
+     </Tab.Screen>
+    <Tab.Screen name="Profile" options={{header : (props)=> <Header {...props}/>}} >
         {(props) => <ProfileScreen {...props} setHasOnboarded={setHasOnboarded} />}
-    </Stack.Screen>
+    </Tab.Screen>
           
-        </Stack.Navigator>
+        </Tab.Navigator>
 
     );
 }

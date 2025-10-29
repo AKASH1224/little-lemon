@@ -3,7 +3,7 @@ import { Image,View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndic
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
-
+import { Ionicons } from '@expo/vector-icons'; // ⭐ Common icon set
 
 const HomeScreen = ({ navigation}) => {
   const [isLoading,setLoading]=useState(true);
@@ -137,12 +137,6 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
         </FlatList>)}
       </View>
    {/*-------------------------------------------------------------------------------   */}
-      <View  style={styles.footer}>
-      <TouchableOpacity style={styles.button}  onPress={()=> navigation.navigate("Profile")}>
-        
-        <Text style={styles.buttonText}>Profile</Text>
-      </TouchableOpacity>
-      </View>
     </View>
   );
 };
@@ -158,9 +152,9 @@ container: { flex:1,backgroundColor:"#fff"},
 // full height
 
 Banner: { 
-  height:hp("29%"),
+  height:hp("30%"),
   width:wp("100%"), 
-  backgroundColor:"#F27329",
+  backgroundColor:"#495E57",
   borderBottomStartRadius:20, 
   borderBottomEndRadius:20,
 },
@@ -168,9 +162,9 @@ BanHeading:
 {
   fontSize:hp("7%"),
   fontWeight:("10%"),
-  bottom:15,
+  bottom:12,
   left:14,
- color:"white",
+ color:"#F4CE14",
 },
 
 BanSubHead:
@@ -187,10 +181,10 @@ paraGrap:
 {
 fontFamily:"Jost",
 fontSize:19,
-fontWeight:"400",
+fontWeight:"300",
 color:"white",
 bottom:38,
-left:14,
+left:10,
 },
 
 BannerImg:{
@@ -203,7 +197,7 @@ BannerImg:{
 },
 
 filterButtonContainer: {
-  height:90,
+  height:hp("8%"),
   backgroundColor: "#fff",
   paddingLeft:14,
   paddingTop:9  ,
