@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity,Image, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 const Onboarding = ({ setHasOnboarded }) => {
   const [name, setName] = useState("");
@@ -23,22 +24,21 @@ const Onboarding = ({ setHasOnboarded }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.heade}>
-        <Image
-        source={require('../assets/lemo2.png')}
-        style={styles.Image}/>
-      <Text style={styles.title}>Little Lemon</Text>
+
+      <View style ={styles.banner}>
+              <View style={styles.heade}>
+                <Image  source={require('../assets/lemo2.png')} style={styles.Image}/>
+                 <Text style={styles.title}>Little Lemon</Text>
+              </View>
       </View>
       
-      
       <View style={styles.mainCompo}>
-      <Text style={styles.subtitle}>Let Us get to know you</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your name"
-        value={name}
-        onChangeText={setName}
-      />
+          <Text style={styles.subtitle}>Let Us get to know you</Text>
+           <TextInput
+            style={styles.input}
+            placeholder="Enter your name"
+            value={name}
+            onChangeText={setName} />
 
       <TextInput
         style={styles.input}
@@ -65,16 +65,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
    backgroundColor: "#ffffff",
   },
+
+  banner:{
+   height:hp("34%"),
+   borderRadius:12, 
+   backgroundColor:"#495E57",
+  borderBottomStartRadius:hp("10%"), 
+  borderBottomEndRadius:hp("10%"),   
+  },
   heade:{
     flex:"20%",
     backgroundColor:"",
-   
-
- },
- Image:{ width: 80, height:70,resizeMode:"contain", borderRadius: 10 },
+  },
+ Image:{ width: 80,Top:40, height:hp("8%"),resizeMode:"contain", borderRadius: 10 },
 //  Middle and main componenet design
- mainCompo:{
- flex:"40%",
+
+mainCompo:{
+ height:hp("33%"),
  backgroundColor:"#E6E6FA",
 
  },
@@ -98,14 +105,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   // below footer comonete desgin
-  
-  
-  footer:
+footer:
   {
-  flex:"20%",
+  height:hp("33%"),
   backgroundColor:"#fff",
   justifyContent:"center",
-  alignItems: "center",
+  
   },
 
   button: {

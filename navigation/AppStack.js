@@ -4,7 +4,7 @@ import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen  from "../screens/ProfileScreen";
 import Header from "../component/Header";
 import { Ionicons } from '@expo/vector-icons'; 
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+
 
 const Tab =createBottomTabNavigator();
 
@@ -15,15 +15,15 @@ const AppStack = ({setHasOnboarded   })=>{
                 let iconName ;
                 let IconCompo;
                 if (route.name ==="Home"){
-                    // iconName= focused ? "home" :"home-outline";
-                    iconName = 'home';
-                    IconCompo = FontAwesome ;
+                     iconName= focused ? "home" :"home-outline";
+                    // iconName = 'home';
+                    // IconCompo = FontAwesome ;
                 }else if (route.name === "Profile"){
                     iconName = focused ? 'person' : 'person-outline';
-                     IconCompo =Ionicons;
+                 //   IconCompo =Ionicons;
                 }
 
-                return <IconCompo  name={iconName} size={size} color={color} />;
+                return <Ionicons  name={iconName} size={size} color={color} />;
 
             },
                 tabBarActiveTintColor: '#F27329',

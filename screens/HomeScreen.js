@@ -3,7 +3,7 @@ import { Image,View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndic
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { Ionicons } from '@expo/vector-icons'; // ⭐ Common icon set
+
 
 const HomeScreen = ({ navigation}) => {
   const [isLoading,setLoading]=useState(true);
@@ -164,7 +164,7 @@ BanHeading:
   fontWeight:("10%"),
   bottom:12,
   left:14,
- color:"#F4CE14",
+  color:"#F4CE14",
 },
 
 BanSubHead:
