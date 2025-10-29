@@ -15,7 +15,7 @@ return(
 <SafeAreaView style={styles.safeArea}>
  <View style={styles.container}>
     <View  style={styles.heada}>
-        <Image  source={require('../assets/lemo2.png')} style={styles.Image}    resizeMode ='contain'/>
+        <Image  source={require('../assets/lemo3.png')} style={styles.Image}    resizeMode ='contain'/>
            <Text style={styles.txt}>Little Lemon</Text>  
     </View>
 
@@ -40,8 +40,8 @@ const styles=StyleSheet.create({
         justifyContent:"space-between",
         alignItems:"center",
         backgroundColor:"#F27329",
-       borderRadius:2,
-       paddingHorizontal:12,
+        borderRadius:2,
+        paddingHorizontal:12,
     },
 
     heada:

@@ -25,33 +25,29 @@ const Onboarding = ({ setHasOnboarded }) => {
   return (
     <View style={styles.container}>
 
-      <View style ={styles.banner}>
+      <View style = {styles.banner}>
               <View style={styles.heade}>
-                <Image  source={require('../assets/lemo2.png')} style={styles.Image}/>
+                <Image  source={require('../assets/lemo3.png')} style={styles.Image}/>
                  <Text style={styles.title}>Little Lemon</Text>
               </View>
       </View>
       
       <View style={styles.mainCompo}>
-          <Text style={styles.subtitle}>Let Us get to know you</Text>
+          <Text style={styles.subtitle}>Let us get to know you</Text>
            <TextInput
             style={styles.input}
             placeholder="Enter your name"
             value={name}
             onChangeText={setName} />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your email"
-        value={email}
-        onChangeText={setEmail}
-      />
-     </View>
-
-     <View style={styles.footer}>
-      <TouchableOpacity style={styles.button} onPress={handleOnboardingComplete}>
-        <Text style={styles.buttonText}>Continue</Text>
-      </TouchableOpacity>
+          <TextInput
+           style={styles.input}
+           placeholder="Enter your email"
+           value={email}
+           onChangeText={setEmail} />
+       <TouchableOpacity style={styles.button} onPress={handleOnboardingComplete}>
+           <Text style={styles.buttonText}>Get Started</Text>
+        </TouchableOpacity>
     </View>
     </View>
   );
@@ -61,38 +57,59 @@ export default Onboarding;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
+   flex: 1,
+   justifyContent: "center",
    backgroundColor: "#ffffff",
   },
 
-  banner:{
-   height:hp("34%"),
-   borderRadius:12, 
-   backgroundColor:"#495E57",
-  borderBottomStartRadius:hp("10%"), 
-  borderBottomEndRadius:hp("10%"),   
+ banner:
+ {
+  height:hp("50%"),
+  backgroundColor:"#F27329",
+  // borderBottomStartRadius:hp("10%"), 
+  // borderBottomEndRadius:hp("10%"),   
+  flexDirection:"row",
+},
+   heade:
+   {
+    flexDirection:"row",
+    top:hp("8%"),
   },
-  heade:{
-    flex:"20%",
-    backgroundColor:"",
+  Image:
+  { 
+      width:90,
+      top:45, 
+      height:hp("11%"),
+      resizeMode:"contain", 
+      left:30,
   },
- Image:{ width: 80,Top:40, height:hp("8%"),resizeMode:"contain", borderRadius: 10 },
-//  Middle and main componenet design
-
-mainCompo:{
- height:hp("33%"),
- backgroundColor:"#E6E6FA",
-
- },
-  title: {
-    fontSize: 26,
+  
+  title: 
+  {
+    fontSize: 34,
+    left:35,
+    top:65, 
     fontWeight: "700",
     textAlign: "center",
     marginBottom: 10,
+    color:"#fff",
   },
+  
+//  Middle and main componenet design
+ 
+mainCompo:{
+ height:hp("65%"),
+ backgroundColor:"#fff",
+ borderTopLeftRadius:hp("8%"),
+ borderTopRightRadius: hp("8%"),
+ bottom:hp("4%"),
+ padding:10,
+ elevation:4,
+ },
+
   subtitle: {
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight:600, 
     textAlign: "center",
     marginBottom: 30,
   },
@@ -105,27 +122,26 @@ mainCompo:{
     fontSize: 16,
   },
   // below footer comonete desgin
-footer:
-  {
-  height:hp("33%"),
-  backgroundColor:"#fff",
-  justifyContent:"center",
-  
-  },
+  footer:
+   {
+   height:hp("33%"),
+   backgroundColor:"#fff",
+   justifyContent:"center",
+   },
 
   button: {
-    backgroundColor: "#f9f905ff",
+    backgroundColor: "#F27329",
     borderRadius: 20,
-    borderWidth:0.1,
-    
-    padding: 15,
+    borderWidth:0.4,
+    top:hp("8%"),
+    padding: 16,
     alignItems: "center",
     marginLeft:"30%",
-    width:"40%",
+    width:"44%",
   },
   buttonText: {
-    color: "black",
+    color: "#fff",
     fontSize: 18,
     fontWeight: "600",
-  },
+  }
 });

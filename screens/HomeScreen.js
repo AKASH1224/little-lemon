@@ -162,7 +162,7 @@ BanHeading:
 {
   fontSize:hp("7%"),
   fontWeight:("10%"),
-  bottom:12,
+  bottom:14,
   left:14,
   color:"#F4CE14",
 },
@@ -222,8 +222,10 @@ filterText: {
   fontSize:15,
 },
 
-mainMenu: { flex: 2, width: "100%", backgroundColor:"#fff"},
-card:{
+mainMenu: { flex: 2, 
+  width: "100%", 
+  backgroundColor:"#fff"},
+  card:{
   width:"80%",
   backgroundColor:"#fff",
   marginBottom: 10,
@@ -240,8 +242,12 @@ CardImg: {
   },
 
 
-footer:{height:60,backgroundColor:'#F27329'},
-button: { height:30,width:70,borderRadius:12, justifyContent: "center",marginLeft:"40%",backgroundColor:"black" },
+footer:{height:60
+,backgroundColor:'#F27329'
+},
+button: { height:30
+  ,width:70,
+  borderRadius:12, justifyContent: "center",marginLeft:"40%",backgroundColor:"black" },
 buttonText: { color: "#fff", fontSize: 16 },
 
 });
