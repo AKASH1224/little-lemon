@@ -30,14 +30,15 @@
       [
         "expo-font",
         {
-          "fonts":[
-        "./assets/fonts/Markazi_Text/static/MarkaziText-Regular.ttf",
-        "./assets/fonts/Markazi_Text/static/MarkaziText-Bold.ttf",
-        "./assets/fonts/Jost/Jost-Italic-VariableFont_wght.ttf",
-        "./assets/fonts/Jost/Jost-VariableFont_wght.ttf"
-      ]
+          "fonts": [
+            "./assets/fonts/Markazi_Text/static/MarkaziText-Regular.ttf",
+            "./assets/fonts/Markazi_Text/static/MarkaziText-Bold.ttf",
+            "./assets/fonts/Jost/Jost-Italic-VariableFont_wght.ttf",
+            "./assets/fonts/Jost/Jost-VariableFont_wght.ttf"
+          ]
         }
-      ]
+      ],
+      "expo-sqlite"
     ]
   }
 }
