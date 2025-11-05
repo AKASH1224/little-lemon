@@ -9,7 +9,8 @@ const HomeScreen = ({ navigation}) => {
   const [isLoading,setLoading]=useState(true);
   const [data,setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Vegetarian"); // e.g., Chicken
-  
+  const [searchQuery,setSearchQuery] =useState('');
+  const [isSearching,setIsSearching] =useState(false);
 let [fontsLoaded] = useFonts({
   'MarkaziText': require('../assets/fonts/MarkaziText-VariableFont_wght.ttf'),
 });
@@ -84,6 +85,22 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
    );
  };
 
+// //  Creatting a Search function
+// const SearchMeals =async (query) => {
+//   if(!query.trim ()){
+//     setIsSearching(false);
+//     getMealsByCategory(selectedCategory);
+//     return;
+
+//   }
+//   setIsSearching(true);
+//   setLoading(true);
+//   try {
+//     const
+//   } catch (error) {
+    
+//   }
+// }
 
 
  // flatList
