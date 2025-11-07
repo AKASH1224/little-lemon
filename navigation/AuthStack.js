@@ -12,7 +12,7 @@ export default function AuthStack({ setHasOnboarded }) {
     <Stack.Navigator screenOptions={{ headerShown: false} }>
       <Stack.Screen name="Onboarding" options={{
         header: (props) => <Header {...props} />, // custom header for this screen
-       }}   >
+       }}>
         {(props) => <Onboarding {...props} setHasOnboarded={setHasOnboarded} />}
       </Stack.Screen>
     </Stack.Navigator>

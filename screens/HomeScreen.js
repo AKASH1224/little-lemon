@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image,View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndicator } from "react-native";
+import { Image,View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndicator, TextInput } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
@@ -36,6 +36,29 @@ const getMealsByCategory=async(category)=>{
     getMealsByCategory(selectedCategory);
   },[selectedCategory]);
 
+
+
+  
+  
+  useEffect (()=>{
+    fetch("www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata")
+    .then(res =>res.json())
+    .then(data=>{
+      setMenu(data);
+      setFilteredMenu(data);
+
+    })
+    .catch(err => console.error (err))
+  },[]);
+
+
+   const handleSearch = text => {
+    setSearchQuery(text);
+    const filtered = menu.filter(item =>
+      item.name.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredMenu(filtered);
+  };
 
 
 //Unused Meta Little lemon APi
@@ -125,6 +148,7 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
                           <Text style={styles.paraGrap}> We are a family owned {"\n"} medditerean restraunts,
                                    {"\n"} focused on traditional {"\n"} recipes served  with a {"\n"} modern twist</Text>
                            {/* <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} /> */}
+                         <TextInput style ={styles.searchInput} placeholder ="Search Dishes" placeholderTextColor= "#555" value ={searchQuery} onChangeText= {handleSearch} />
                    </View>
                   <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} />
                   
@@ -169,7 +193,7 @@ container: { flex:1,backgroundColor:"#fff"},
 // full height
 
 Banner: { 
-  height:hp("30%"),
+  height:hp("35%"),
   width:wp("100%"), 
   backgroundColor:"#495E57",
   borderBottomStartRadius:20, 
@@ -211,6 +235,23 @@ BannerImg:{
   right:18,
   top:60,
   position:"absolute",
+},
+
+searchInput:{
+    position: "absolute",
+  bottom: 20,
+  left: 20,
+  right: 20,
+  backgroundColor: "#fff",
+  borderRadius: 10,
+  paddingHorizontal: 15,
+  paddingVertical: 10,
+  fontSize: 16,
+  elevation: 5, // adds shadow on Android
+  shadowColor: "#000", // shadow for iOS
+  shadowOpacity: 0.2,
+  shadowRadius: 3,
+
 },
 
 filterButtonContainer: {
