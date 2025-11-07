@@ -16,6 +16,9 @@ A  **React Native app** for a Mediterranean restaurant, featuring **navigation**
 - **Add to Cart ** -add to cart screen 
 - 
 ---
+## 🎥 Demo
+[Link Text](https://drive.google.com/file/d/1fDL1ysfRu7bY0R-mbYBYemT_1F64Jv6i/view?usp=sharing)
+
 
 ## Screens
 
