@@ -26,6 +26,7 @@ const getMealsByCategory=async(category)=>{
     }));
     setData(mealsWithPrice);
    }
+
   catch(error){
      console.log("error");
      }finally{
@@ -38,27 +39,38 @@ const getMealsByCategory=async(category)=>{
 
 
 
+  const  searchMeals =async (query) => {
+    if(!query.trim()){
+      setIsSearching(false);
+      getMealsByCategory(selectedCategory);
+      return;
+    }
+    setIsSearching(true);
+    setLoading(true);
+    try {
+      const response =await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
+      const json  =await response.json();
+      const meals = json.meals || [];
+      const mealsWithPrice = meals.map(meal =>({
+        ...meal ,
+        price:(Math.random() * 100).toFixed()
+      }))
+      setData(mealsWithPrice);
+      } catch (error) {
+      console.log("Search error",error);
+   }finally{
+    setLoading(false);
+   }
+   };
+
+
+
+   useEffect(() => {
+  if (!isSearching) {
+    getMealsByCategory(selectedCategory);
+  }
+}, [selectedCategory]);
   
-  
-  useEffect (()=>{
-    fetch("www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata")
-    .then(res =>res.json())
-    .then(data=>{
-      setMenu(data);
-      setFilteredMenu(data);
-
-    })
-    .catch(err => console.error (err))
-  },[]);
-
-
-   const handleSearch = text => {
-    setSearchQuery(text);
-    const filtered = menu.filter(item =>
-      item.name.toLowerCase().includes(text.toLowerCase())
-    );
-    setFilteredMenu(filtered);
-  };
 
 
 //Unused Meta Little lemon APi
@@ -84,9 +96,7 @@ const getMealsByCategory=async(category)=>{
 const Item =({item})=>{
      
 const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/images/${item.image}`;
-
-    
- return(
+  return(
        <View style={styles.card}>
         <Image style={styles.CardImg}  source={{uri:item.strMealThumb}} />
        <View style={styles.cardContent}>
@@ -148,11 +158,27 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
                           <Text style={styles.paraGrap}> We are a family owned {"\n"} medditerean restraunts,
                                    {"\n"} focused on traditional {"\n"} recipes served  with a {"\n"} modern twist</Text>
                            {/* <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} /> */}
-                         <TextInput style ={styles.searchInput} placeholder ="Search Dishes" placeholderTextColor= "#555" value ={searchQuery} onChangeText= {handleSearch} />
+                         {/* <TextInput style ={styles.searchInput} placeholder ="Search Dishes" placeholderTextColor= "#555" value ={searchQuery} onChangeText= {handleSearch} /> */}
                    </View>
+                  
+                  {/* Search container */}
+                  <View style={styles.searchContainer}>
+                    <TextInput style ={styles.searchInput}
+                      placeholder="Search meals ..."
+                      value={searchQuery}
+                      onChangeText={(text) =>{
+                          setSearchQuery(text);
+                          searchMeals(text);
+                      }} 
+                      placeholderTextColor="#888"
+                      />
+
+
+                  </View>
                   <Image  source={require('../assets/Hero_image.png')} style={styles.BannerImg} />
                   
-                   {/**-----------------------* */ }
+                  {/**-----------------------* */ }
+                  
                    <View style={styles.filterButtonContainer}>
                      <FlatList data={categories} horizontal={true}  renderItem={
                           ({item})=>{ const selected = item === selectedCategory;
@@ -236,7 +262,11 @@ BannerImg:{
   top:60,
   position:"absolute",
 },
-
+searchContainer:{
+paddingHorizontal:14,
+paddingTop:10,
+backgroundColor:"#fff",
+},
 searchInput:{
     position: "absolute",
   bottom: 20,
