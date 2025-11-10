@@ -16,8 +16,8 @@ let [fontsLoaded] = useFonts({
 });
   
 
-const   onAddToCart = ({item}) =>{
-  const  onAdd = async () => {
+const  onAddToCart = async({item}) =>
+  {
     try {
       const payload ={
         productId :item.idMeal.toString(),
@@ -27,23 +27,30 @@ const   onAddToCart = ({item}) =>{
         metadata:{thumb : item.strMealThumb} 
       };
       const result = await handleAddToItem(payload);
-      if(result.inserted){
+       if(result.inserted)
+         {
         alert("Added to cart");
-      }else if(result.inserted){
+        }
+       else if(result.inserted)
+        {
         alert("added to cart");
-      }else if (result.updated){
+        }
+      else if (result.updated)
+        {
         alert(`CArt updated (qty : ${result.qty})`);
-      }else{
+        }
+        else
+          {
         alert ("added");
-      }
-
-    } catch (error) {
+        }
+  } catch(error) 
+  {
              console.error("addToCart error", err);
              alert("Failed to add to cart");
-    }
-    
   }
-}
+    
+  };
+
 
 
 const getMealsByCategory=async(category)=>{
@@ -140,8 +147,9 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
         
          {/* Price */}
         <Text style={styles.price}>${item.price}</Text>
-       
-       </View>
+           <TouchableOpacity onPress={()=>onAddToCart(item)} style={styles.addBtn}><Text style={{color :"#fff",textAlign:"center"}}>Add to Cart</Text>
+           </TouchableOpacity>
+     </View>
      </View>
    );
  };
@@ -227,9 +235,6 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
        {isLoading ? (<ActivityIndicator color="#F27329"  size="large"   style={{ marginTop: 40 }}  />): 
        (<FlatList data={data} renderItem={renderItem}     keyExtractor={(item) => item.idMeal} 
         contentContainerStyle={styles.listContainer}>
-          <TouchableOpacity onPress={onAddToCart} style={styles.addBtn}>
-          <Text style ={{color:"#fff"}} >Add to cart </Text>  
-          </TouchableOpacity> 
         </FlatList>)}
       </View>
    {/*-------------------------------------------------------------------------------   */}
@@ -291,11 +296,15 @@ BannerImg:{
   top:60,
   position:"absolute",
 },
+
+
 searchContainer:{
 paddingHorizontal:14,
 paddingTop:10,
 backgroundColor:"#fff",
 },
+
+
 searchInput:{
     position: "absolute",
   bottom: 20,
@@ -358,6 +367,13 @@ CardImg: {
     borderRadius:16,  // Cover the area (may crop)
   },
 
+  addBtn:{
+  backgroundColor:"#f29f05",
+  borderRadius:10,
+  paddingVertical:8,
+  marginTop:10,
+  alignItems:"center",
+  },
 
 footer:{height:60
 ,backgroundColor:'#F27329'
