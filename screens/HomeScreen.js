@@ -43,8 +43,9 @@ const  handleAddToItem =({item}) =>{
     }
     
   }
-
 }
+
+
 const getMealsByCategory=async(category)=>{
   setLoading(true);
    try{
@@ -173,9 +174,7 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
     setHasOnboarded(false); // return to onboarding
   };
    
-
-
-  return (
+ return (
     <View style={styles.container}>
       {/*----------------- Banner----------------------------- */}
                   <View style={styles.Banner}>
@@ -227,7 +226,10 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
       <View style={styles.mainMenu}>
        {isLoading ? (<ActivityIndicator color="#F27329"  size="large"   style={{ marginTop: 40 }}  />): 
        (<FlatList data={data} renderItem={renderItem}     keyExtractor={(item) => item.idMeal} 
-        contentContainerStyle={styles.listContainer}> 
+        contentContainerStyle={styles.listContainer}>
+          <TouchableOpacity onPress={onAdd} style={styles.addBtn}>
+          <Text style ={{color:"#fff"}} >Add to cart </Text>  
+          </TouchableOpacity> 
         </FlatList>)}
       </View>
    {/*-------------------------------------------------------------------------------   */}
