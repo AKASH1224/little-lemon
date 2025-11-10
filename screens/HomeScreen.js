@@ -3,7 +3,7 @@ import { Image,View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndic
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
-import  {addToCart}  from "../db/cartDb";
+import  {handleAddToItem}  from "../db/cartDb";
 
 const HomeScreen = ({ navigation}) => {
   const [isLoading,setLoading]=useState(true);
@@ -16,7 +16,7 @@ let [fontsLoaded] = useFonts({
 });
   
 
-const  handleAddToItem =({item}) =>{
+const   onAddToCart = ({item}) =>{
   const  onAdd = async () => {
     try {
       const payload ={
@@ -26,7 +26,7 @@ const  handleAddToItem =({item}) =>{
         qty : 1,
         metadata:{thumb : item.strMealThumb} 
       };
-      const result = await addToCart(payload);
+      const result = await handleAddToItem(payload);
       if(result.inserted){
         alert("Added to cart");
       }else if(result.inserted){
@@ -227,7 +227,7 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
        {isLoading ? (<ActivityIndicator color="#F27329"  size="large"   style={{ marginTop: 40 }}  />): 
        (<FlatList data={data} renderItem={renderItem}     keyExtractor={(item) => item.idMeal} 
         contentContainerStyle={styles.listContainer}>
-          <TouchableOpacity onPress={onAdd} style={styles.addBtn}>
+          <TouchableOpacity onPress={onAddToCart} style={styles.addBtn}>
           <Text style ={{color:"#fff"}} >Add to cart </Text>  
           </TouchableOpacity> 
         </FlatList>)}
