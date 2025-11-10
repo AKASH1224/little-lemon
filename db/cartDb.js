@@ -26,26 +26,37 @@ export const  initDb =async()=>{
 
 // add item to cart(if exists -> increase qty, else insert )
 export const  handleAddToItem = async (item) => {
-    const database =await openDb();
-    const pid = String(item.productId);
-    const qtyToAdd = Number(item.qty ||1);
-    // Check Existing
-   const existing = await database.getFirstAsync("Select  * from cart WHERE Product =? ",pid) ;
+   try{
+     const database =await openDb();
+     const pid = String(item.productId);
+     const qtyToAdd = Number(item.qty ||1);
+     // Check Existing
+     const existing = await database.getFirstAsync("Select  * from cart WHERE productId =? ",[pid] );
+  
+//   2
    if(existing){
     const newQty =Number(existing.qty) + qtyToAdd;
-    await database.runAsync("UPDATE cart SET qty =? WHERE productId = ? ",newQty,pid);
+    await database.runAsync("UPDATE cart SET qty =? WHERE productId = ? ",[newQty,pid]);
     return{updated:true,productId:pid,qty:newQty};
-   }else{
+   }
+   
+   else
+    {
     await  database.runAsync("Insert INTO cart (productId,title,price,qty,metadata) VALUES(?,?,?,?,?)",
-        pid,
+      [  pid,
         item.title,
         Number(item.price),
         qtyToAdd,
-        JSON.stringify(item.metadata || {})
+        JSON.stringify(item.metadata || {}),
+    ]
     );
-    const row =await database.getFirstAsync("Select * FROM cart WHERE productId =?",pid);
+    
+    const row =await database.getFirstAsync("Select * FROM cart WHERE productId =?",[pid]);
     return {inserted :true,row};
- }  
+ }  }catch(error){
+     console.error("Error adding to cart:", error);
+    return { error: true };
+ }
 };
 
 // get all items 

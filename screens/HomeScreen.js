@@ -5,18 +5,19 @@ import { useFonts } from "expo-font";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import  {handleAddToItem}  from "../db/cartDb";
 
+
 const HomeScreen = ({ navigation}) => {
   const [isLoading,setLoading]=useState(true);
   const [data,setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Vegetarian"); // e.g., Chicken
   const [searchQuery,setSearchQuery] =useState('');
   const [isSearching,setIsSearching] =useState(false);
-let [fontsLoaded] = useFonts({
+  let [fontsLoaded] = useFonts({
   'MarkaziText': require('../assets/fonts/MarkaziText-VariableFont_wght.ttf'),
-});
+  });
   
 
-const  onAddToCart = async({item}) =>
+const  onAddToCart = async(item) =>
   {
     try {
       const payload ={
@@ -43,7 +44,7 @@ const  onAddToCart = async({item}) =>
           {
         alert ("added");
         }
-  } catch(error) 
+  } catch(err) 
   {
              console.error("addToCart error", err);
              alert("Failed to add to cart");
