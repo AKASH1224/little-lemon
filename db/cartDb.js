@@ -25,7 +25,7 @@ export const  initDb =async()=>{
 
 
 // add item to cart(if exists -> increase qty, else insert )
-export const  addToCart = async (item) => {
+export const  handleAddToItem = async (item) => {
     const database =await openDb();
     const pid = String(item.productId);
     const qtyToAdd = Number(item.qty ||1);

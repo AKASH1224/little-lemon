@@ -3,7 +3,7 @@ import { Image,View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndic
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
-
+import  {addToCart}  from "../db/cartDb";
 
 const HomeScreen = ({ navigation}) => {
   const [isLoading,setLoading]=useState(true);
@@ -16,6 +16,35 @@ let [fontsLoaded] = useFonts({
 });
   
 
+const  handleAddToItem =({item}) =>{
+  const  onAdd = async () => {
+    try {
+      const payload ={
+        productId :item.idMeal.toString(),
+        title:item.strMeal,
+        price:Number(item.price || 99 ),  //ensure number 
+        qty : 1,
+        metadata:{thumb : item.strMealThumb} 
+      };
+      const result = await addToCart(payload);
+      if(result.inserted){
+        alert("Added to cart");
+      }else if(result.inserted){
+        alert("added to cart");
+      }else if (result.updated){
+        alert(`CArt updated (qty : ${result.qty})`);
+      }else{
+        alert ("added");
+      }
+
+    } catch (error) {
+             console.error("addToCart error", err);
+             alert("Failed to add to cart");
+    }
+    
+  }
+
+}
 const getMealsByCategory=async(category)=>{
   setLoading(true);
    try{
@@ -63,13 +92,11 @@ const getMealsByCategory=async(category)=>{
    }
    };
 
-
-
-   useEffect(() => {
-  if (!isSearching) {
-    getMealsByCategory(selectedCategory);
-  }
-}, [selectedCategory]);
+ useEffect(() => {
+   if (!isSearching) {
+     getMealsByCategory(selectedCategory);
+   }
+  }, [selectedCategory]);
   
 
 
