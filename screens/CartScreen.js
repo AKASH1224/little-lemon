@@ -69,8 +69,8 @@ const CartScreen =() =>{
                      />
                      <View style ={styles.info}>
                           <Text style={styles.title}>{item.title}</Text>
-                          <Text>RS {item.price}</Text>
-                          <Text>Qty :{item.qty}</Text>
+                          <Text>{item.price}</Text>
+                          <Text>{item.qty}</Text>
                      </View>
                      <TouchableOpacity onPress={()=> removeFromCart(item.id)}>
                         <Text style ={styles.delete}>Delete</Text>

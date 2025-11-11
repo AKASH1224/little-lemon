@@ -5,6 +5,7 @@ import ProfileScreen  from "../screens/ProfileScreen";
 import CartScreen from '../screens/CartScreen';
 import Header from "../component/Header";
 import { Ionicons } from '@expo/vector-icons'; 
+import {Feather} from '@expo/vector-icons/Feather';
 
 
 const Tab =createBottomTabNavigator();
@@ -22,7 +23,10 @@ const AppStack = ({setHasOnboarded   })=>{
                 }else if (route.name === "Profile"){
                     iconName = focused ? 'person' : 'person-outline';
                  //   IconCompo =Ionicons;
+                }else if(route.name ==="Payment"){
+                    iconName =focused ? 'payment':'';
                 }
+
 
                 return <Ionicons  name={iconName} size={size} color={color} />;
 
