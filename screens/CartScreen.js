@@ -8,9 +8,9 @@ const openDb = async()=>{
     return db;
 };
 
-const CartScreen = () =>{
+const CartScreen =() =>{
 
-    const [getCartItems,setCartItems] =useState([]);
+    const [cartItems,setCartItems] =useState([]);
     const [loading ,setLoading] =useState(true);
     
     
@@ -87,3 +87,4 @@ const CartScreen = () =>{
 const styles =StyleSheet.create({
 
 })
+export default CartScreen;

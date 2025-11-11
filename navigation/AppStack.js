@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen  from "../screens/ProfileScreen";
+import CartScreen from '../screens/CartScreen';
 import Header from "../component/Header";
 import { Ionicons } from '@expo/vector-icons'; 
 
@@ -28,9 +29,7 @@ const AppStack = ({setHasOnboarded   })=>{
             },
                 tabBarActiveTintColor: '#F27329',
     tabBarInactiveTintColor: 'gray',
-    
-            
-        })
+     })
         }>
       <Tab.Screen name="Home" options={{
         header: (props) => <Header {...props} />, // custom header for this screen
@@ -41,7 +40,9 @@ const AppStack = ({setHasOnboarded   })=>{
     <Tab.Screen name="Profile" options={{header : (props)=> <Header {...props}/>}} >
         {(props) => <ProfileScreen {...props} setHasOnboarded={setHasOnboarded} />}
     </Tab.Screen>
-          
+    <Tab.Screen name="Payment" options={{header :(props) => <Header{...props}/>}} >
+        {(props) =><CartScreen {...props} setHasOnboarded ={setHasOnboarded}  />}
+    </Tab.Screen>   
         </Tab.Navigator>
 
     );
