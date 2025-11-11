@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import AuthStack from "./navigation/AuthStack";
 import AppStack from "./navigation/AppStack";
+import { initDb } from "./db/cartDb";
 
 
 
@@ -10,6 +11,17 @@ import AppStack from "./navigation/AppStack";
 export default function App() {
   const [hasOnboarded, setHasOnboarded] = useState(false);
   const [loading, setLoading] = useState(true);
+
+   useEffect(()=>{
+    const setupDb = async () => {
+      await initDb();
+      console.log("Cart DB initialized successfully");
+      };
+     setupDb();
+    },[]);
+
+
+
 
   useEffect(() => {
     const checkOnboarding = async () => {
