@@ -14,7 +14,7 @@ export const  initDb =async()=>{
     PRAGMA journal_mode =WAL;
     CREATE Table IF NOT EXISTS cart (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    productID Text UNIQUE,
+    productId Text UNIQUE,
     title TEXT NOT NULL, 
     price REAL NOT NULL,
     qty INTEGER NOT NULL DEFAULT 1,
