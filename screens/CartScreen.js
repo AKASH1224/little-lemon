@@ -85,6 +85,34 @@ const CartScreen =() =>{
 
 
 const styles =StyleSheet.create({
+    container :{
+        flex:1,
+        padding:16, backgroundColor:'#fff'
+    },
+    heading :{
+        fontSize:22,
+        fontWeight:'bold',
+        marginBottom:10
+    },
+    emptyText:{
+        textAlign:'center',marginTop:50,
+        fontSize:18
+    },
+    cartItem:{
+        flexDirection:'row',
+        backgroundColor:"#f8f8f8f8",
+        borderRadius:8,
+        padding:10,
+        marginBottom:10,
+        alignItems:"center",
+    },
+    image: { width: 60, height: 60, borderRadius: 8, marginRight: 10 },
+  info: { flex: 1 },
+  title: { fontSize: 16, fontWeight: 'bold' },
+  delete: { fontSize: 18, color: 'red' },
+
+
+
 
 })
 export default CartScreen;
