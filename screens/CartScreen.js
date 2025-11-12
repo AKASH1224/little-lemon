@@ -1,7 +1,7 @@
-import React,{useEffect,useState} from 'react';
+import React,{useCallback, useEffect,useState} from 'react';
 import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import * as Sqlite from 'expo-sqlite';
-
+import { useFocusEffect } from '@react-navigation/native'; 
 //Open Database  
 const openDb = async()=>{
     const db = await Sqlite.openDatabaseAsync('littlelemon_cart.db');
@@ -46,8 +46,15 @@ const CartScreen =() =>{
 
 
     // Fetch Items on load
-   
+   useFocusEffect(
+    useCallback(()=>{
+        setLoading(true);
+        fetchCartItems();
 
+    },[])
+
+   );
+      
     useEffect (()=>{
     fetchCartItems();
     },[]);
