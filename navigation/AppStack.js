@@ -5,17 +5,15 @@ import ProfileScreen  from "../screens/ProfileScreen";
 import CartScreen from '../screens/CartScreen';
 import Header from "../component/Header";
 import { Ionicons } from '@expo/vector-icons'; 
-import {Feather} from '@expo/vector-icons/Feather';
-
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 const Tab =createBottomTabNavigator();
-
 const AppStack = ({setHasOnboarded   })=>{
     return(
         <Tab.Navigator screenOptions={({route}) =>({
             tabBarIcon: ({focused,color,size}) => {
                 let iconName ;
-                let IconCompo;
+                let IconCompo =  Ionicons;
                 if (route.name ==="Home"){
                      iconName= focused ? "home" :"home-outline";
                     // iconName = 'home';
@@ -23,12 +21,14 @@ const AppStack = ({setHasOnboarded   })=>{
                 }else if (route.name === "Profile"){
                     iconName = focused ? 'person' : 'person-outline';
                  //   IconCompo =Ionicons;
-                }else if(route.name ==="Payment"){
-                    iconName =focused ? 'payment':'';
-                }
+              } else if (route.name === "Payment") {
+                IconCompo = AntDesign; // 👈 use AntDesign icons for Payment
+                iconName = "shopping-cart";
+          }
 
 
-                return <Ionicons  name={iconName} size={size} color={color} />;
+
+                return <IconCompo  name={iconName} size={size} color={color} />;
 
             },
                 tabBarActiveTintColor: '#F27329',

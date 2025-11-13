@@ -65,8 +65,8 @@ const CartScreen =() =>{
     return(
         <View style ={styles.container}>
            <Text style ={styles.heading}>Your Cart</Text>
-           (cartItems.length === 0 ?(
-            <Text style ={styles.emptyText}>your Cart is empty</Text>
+           {cartItems.length === 0 ?(
+            <Text style ={styles.emptyText}></Text>
            ):(
             <FlatList data={cartItems}
                keyExtractor={(item) =>item.id.toString()}
@@ -86,7 +86,7 @@ const CartScreen =() =>{
                     </View>
                     )}
                     />
-           ))
+           )}
         </View>
     )
 }
