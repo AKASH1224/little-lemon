@@ -4,8 +4,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import AuthStack from "./navigation/AuthStack";
 import AppStack from "./navigation/AppStack";
 import { initDb } from "./db/cartDb";
-
-
+import * as Notifications from "expo-notifications";
+import * as Device from "expo-device";
+import { Platform } from "react-native";
 
 
 export default function App() {
@@ -19,9 +20,6 @@ export default function App() {
       };
      setupDb();
     },[]);
-
-
-
 
   useEffect(() => {
     const checkOnboarding = async () => {

@@ -12,7 +12,7 @@ const  Header =({navigation})=>{
       
 
 return(
-<SafeAreaView style={styles.safeArea}>
+<SafeAreaView style={styles.safeArea}>npx 
  <View style={styles.container}>
     <View  style={styles.heada}>
         <Image  source={require('../assets/lemo3.png')} style={styles.Image}    resizeMode ='contain'/>

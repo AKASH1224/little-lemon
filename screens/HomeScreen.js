@@ -137,23 +137,26 @@ const imageUrl = `https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Wor
         <Image style={styles.CardImg}  source={{uri:item.strMealThumb}} />
        <View style={styles.cardContent}>
          
-         <View style={styles.categoryBadge}>
-           <Text style={styles.categoryText}>{selectedCategory}</Text>
-         </View>
+           <View style={styles.categoryBadge}>
+             <Text style={styles.categoryText}>{selectedCategory}</Text>
+           </View>
    
-         <Text style={styles.itemName}>{item.strMeal}</Text>
+           <Text style={styles.itemName}>{item.strMeal}</Text>
          
-         {/* Description */}
-         <Text style={styles.description}>{item.idMeal}</Text>
+           {/* Description */}
+            <Text style={styles.description}>{item.idMeal}</Text>
         
-         {/* Price */}
-        <Text style={styles.price}>${item.price}</Text>
-           <TouchableOpacity onPress={()=>onAddToCart(item)} style={styles.addBtn}><Text style={{color :"#fff",textAlign:"center"}}>Add to Cart</Text>
-           </TouchableOpacity>
+           {/* Price */}
+           <Text style={styles.price}>${item.price}</Text>
+             <TouchableOpacity onPress={()=>onAddToCart(item)} style={styles.addBtn}><Text style={{color :"#fff",textAlign:"center"}}>Add to Cart</Text>
+            </TouchableOpacity>
      </View>
      </View>
    );
  };
+
+
+
 
 // //  Creatting a Search function
 // const SearchMeals =async (query) => {
@@ -349,15 +352,20 @@ filterText: {
   fontSize:15,
 },
 
-mainMenu: { flex: 2, 
+mainMenu: {
+   flex: 2, 
   width: "100%", 
-  backgroundColor:"#fff"},
+  backgroundColor:"#fff"
+},
+  
+  
   card:{
   width:"80%",
   backgroundColor:"#fff",
   marginBottom: 10,
   borderRadius: 15,
-  marginLeft:20,
+  marginLeft:55,
+  marginRight:45,
   elevation:20,
 },
 
@@ -373,6 +381,9 @@ CardImg: {
   borderRadius:10,
   paddingVertical:8,
   marginTop:10,
+  width:wp("40%"),
+  marginLeft:wp("20%"),
+
   alignItems:"center",
   },
 

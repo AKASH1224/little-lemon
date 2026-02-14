@@ -1,0 +1,28 @@
+{
+  "Registered Name": "Razorpay Software Limited",
+  "CIN": "U72200KA2013PLC097389",
+  "PAN": "AAGCR4375J",
+  "TAN": "BLRR14773D"
+}
+ Explain React Hooks and their purpose
+- Differences between `useMemo` and `useCallback`, and when to use each
+- Real-world scenarios requiring these optimization hooks
+- Differences between `useLayoutEffect` and `useEffect`, including execution timing and use cases
+
+Performance & Optimization:
+- Techniques for optimizing React applications
+- SEO improvement strategies for React apps
+- Common security vulnerabilities and mitigation approaches
+
+Critical Debugging Scenario:
+"Production page is blank but works fine in development - how do you debug and resolve?" This question tested systematic debugging skills and understanding of environment differences.
+
+JavaScript Fundamentals:
+- Explain the event loop and how it works
+- Differences between Debouncing and Throttling, and their implementation
+- Hands-on coding with the Array `reduce()` method
+
+Key takeaways from my experience:
+
+✅ Production experience matters - Be ready to discuss real challenges you've solved 
+✅ Fundamentals are crucial - A deep understanding of hooks, closures, and JavaScript core concepts is essential 
